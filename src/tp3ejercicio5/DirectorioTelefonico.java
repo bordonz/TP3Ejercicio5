@@ -7,10 +7,10 @@ import java.util.Set;
 import java.util.TreeMap;
 
 public class DirectorioTelefonico {
-    private TreeMap<Long, Contacto> directorio;
+    public static TreeMap<Long, Contacto> directorio;
     
     public DirectorioTelefonico(){
-        this.directorio = new TreeMap<>();
+        directorio = new TreeMap<>();
     }
 
     public void agregarContacto(Long nroTelefono, Contacto contacto){

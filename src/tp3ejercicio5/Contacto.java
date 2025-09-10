@@ -1,13 +1,14 @@
 package tp3ejercicio5;
 
 public class Contacto {
-    private int dni;
+
+    private long dni;
     private String nombre;
     private String apellido;
     private String ciudad;
     private String direccion;
 
-    public Contacto(int dni, String nombre, String apellido, String ciudad, String direccion) {
+    public Contacto(long dni, String nombre, String apellido, String ciudad, String direccion) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -15,11 +16,11 @@ public class Contacto {
         this.direccion = direccion;
     }
 
-    public int getDni() {
+    public long getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(long dni) {
         this.dni = dni;
     }
 
@@ -57,8 +58,7 @@ public class Contacto {
 
     @Override
     public String toString() {
-        return "Contacto{" + "dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", ciudad=" + ciudad + ", direccion=" + direccion + '}';
+        return apellido + ", " + nombre + " [DNI: " + dni + "], " + ciudad + ", " + direccion;
     }
-    
-    
+
 }

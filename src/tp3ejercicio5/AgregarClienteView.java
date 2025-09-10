@@ -235,8 +235,8 @@ public class AgregarClienteView extends javax.swing.JInternalFrame {
             }
             
             Contacto c1 = new Contacto (dni, nombre, apellido, ciudad, domicilio);
-            if (!DirectorioTelefonico.directorio.containsKey(telefono)) {
-                DirectorioTelefonico.directorio.put(telefono, c1);
+            if (!DirectorioTelefonico.contactos.containsKey(telefono)) {
+                DirectorioTelefonico.contactos.put(telefono, c1);
             } else {
                 JOptionPane.showMessageDialog(this, "El número de teléfono ingresado ya está en uso");
             }

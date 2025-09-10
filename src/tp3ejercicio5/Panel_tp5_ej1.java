@@ -5,6 +5,9 @@
  */
 package tp3ejercicio5;
 
+import java.util.Set;
+import java.util.TreeSet;
+
 /**
  *
  * @author Usuario
@@ -14,6 +17,10 @@ public class Panel_tp5_ej1 extends javax.swing.JFrame {
     /**
      * Creates new form Panel
      */
+    
+    public static DirectorioTelefonico directorio = new DirectorioTelefonico();
+    public static Set<String> Ciudades = new TreeSet<>();
+    
     public Panel_tp5_ej1() {
         initComponents();
     }

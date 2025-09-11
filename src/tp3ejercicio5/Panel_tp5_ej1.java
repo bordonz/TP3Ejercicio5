@@ -7,6 +7,7 @@ package tp3ejercicio5;
 
 import java.util.Set;
 import java.util.TreeSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,13 +15,9 @@ import java.util.TreeSet;
  */
 public class Panel_tp5_ej1 extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Panel
-     */
-    
     public static DirectorioTelefonico directorio = new DirectorioTelefonico();
     public static Set<String> Ciudades = new TreeSet<>();
-    
+
     public Panel_tp5_ej1() {
         initComponents();
     }
@@ -35,17 +32,18 @@ public class Panel_tp5_ej1 extends javax.swing.JFrame {
     private void initComponents() {
 
         Escritorio = new javax.swing.JDesktopPane();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        BuscarCliente = new javax.swing.JMenuItem();
-        BorrarCliente = new javax.swing.JMenuItem();
+        jmVistaPrincipal = new javax.swing.JMenuBar();
+        jmClientes = new javax.swing.JMenu();
         AgregarCliente = new javax.swing.JMenuItem();
-        BusquedaClienteporCiudad = new javax.swing.JMenu();
+        BorrarCliente = new javax.swing.JMenuItem();
+        BuscarCliente = new javax.swing.JMenuItem();
+        jmDirectorio = new javax.swing.JMenu();
         BuscarClienteporCiudad = new javax.swing.JMenuItem();
         BuscarTelefono = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        jmCiudades = new javax.swing.JMenu();
         AgregarCiudad = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        jmSalir = new javax.swing.JMenu();
+        Salir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,45 +51,53 @@ public class Panel_tp5_ej1 extends javax.swing.JFrame {
         Escritorio.setLayout(EscritorioLayout);
         EscritorioLayout.setHorizontalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 721, Short.MAX_VALUE)
+            .addGap(0, 741, Short.MAX_VALUE)
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 493, Short.MAX_VALUE)
+            .addGap(0, 524, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Cientes");
-
-        BuscarCliente.setText("Buscar Cliente");
-        BuscarCliente.addActionListener(new java.awt.event.ActionListener() {
+        jmClientes.setText("Clientes");
+        jmClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscarClienteActionPerformed(evt);
+                jmClientesActionPerformed(evt);
             }
         });
-        jMenu1.add(BuscarCliente);
 
-        BorrarCliente.setText("Borrar Cliente");
-        BorrarCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BorrarClienteActionPerformed(evt);
-            }
-        });
-        jMenu1.add(BorrarCliente);
-
+        AgregarCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         AgregarCliente.setText("Agregar Cliente");
         AgregarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AgregarClienteActionPerformed(evt);
             }
         });
-        jMenu1.add(AgregarCliente);
+        jmClientes.add(AgregarCliente);
 
-        jMenuBar1.add(jMenu1);
-
-        BusquedaClienteporCiudad.setText("Directorios");
-        BusquedaClienteporCiudad.addActionListener(new java.awt.event.ActionListener() {
+        BorrarCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        BorrarCliente.setText("Borrar Cliente");
+        BorrarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BusquedaClienteporCiudadActionPerformed(evt);
+                BorrarClienteActionPerformed(evt);
+            }
+        });
+        jmClientes.add(BorrarCliente);
+
+        BuscarCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        BuscarCliente.setText("Buscar Cliente");
+        BuscarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarClienteActionPerformed(evt);
+            }
+        });
+        jmClientes.add(BuscarCliente);
+
+        jmVistaPrincipal.add(jmClientes);
+
+        jmDirectorio.setText("Directorio");
+        jmDirectorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmDirectorioActionPerformed(evt);
             }
         });
 
@@ -101,7 +107,7 @@ public class Panel_tp5_ej1 extends javax.swing.JFrame {
                 BuscarClienteporCiudadActionPerformed(evt);
             }
         });
-        BusquedaClienteporCiudad.add(BuscarClienteporCiudad);
+        jmDirectorio.add(BuscarClienteporCiudad);
 
         BuscarTelefono.setText("Buscar Telefono por Apellido");
         BuscarTelefono.addActionListener(new java.awt.event.ActionListener() {
@@ -109,11 +115,16 @@ public class Panel_tp5_ej1 extends javax.swing.JFrame {
                 BuscarTelefonoActionPerformed(evt);
             }
         });
-        BusquedaClienteporCiudad.add(BuscarTelefono);
+        jmDirectorio.add(BuscarTelefono);
 
-        jMenuBar1.add(BusquedaClienteporCiudad);
+        jmVistaPrincipal.add(jmDirectorio);
 
-        jMenu3.setText("Ciudades");
+        jmCiudades.setText("Ciudades");
+        jmCiudades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmCiudadesActionPerformed(evt);
+            }
+        });
 
         AgregarCiudad.setText("Agregar Ciudad");
         AgregarCiudad.addActionListener(new java.awt.event.ActionListener() {
@@ -121,32 +132,42 @@ public class Panel_tp5_ej1 extends javax.swing.JFrame {
                 AgregarCiudadActionPerformed(evt);
             }
         });
-        jMenu3.add(AgregarCiudad);
+        jmCiudades.add(AgregarCiudad);
 
-        jMenuBar1.add(jMenu3);
+        jmVistaPrincipal.add(jmCiudades);
 
-        jMenu4.setText("Salir");
-        jMenuBar1.add(jMenu4);
+        jmSalir.setText("Salir");
+        jmSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmSalirActionPerformed(evt);
+            }
+        });
 
-        setJMenuBar(jMenuBar1);
+        Salir.setText("Salir");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
+        jmSalir.add(Salir);
+
+        jmVistaPrincipal.add(jmSalir);
+
+        setJMenuBar(jmVistaPrincipal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+            .addComponent(Escritorio, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 31, Short.MAX_VALUE))
+            .addComponent(Escritorio)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BuscarTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarTelefonoActionPerformed
@@ -154,30 +175,30 @@ public class Panel_tp5_ej1 extends javax.swing.JFrame {
         Escritorio.removeAll();
         Escritorio.repaint();
         BuscarTelefonoporApellidoView bt = new BuscarTelefonoporApellidoView();
-        bt.setVisible(true);
         Escritorio.add(bt);
-        Escritorio.moveToFront(bt);
+        bt.setVisible(true);
+        bt.moveToFront();
     }//GEN-LAST:event_BuscarTelefonoActionPerformed
 
     private void AgregarCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarCiudadActionPerformed
         // TODO add your handling code here:
         Escritorio.removeAll();
         Escritorio.repaint();
-        AgregarCiudadView ac = new AgregarCiudadView();
-        ac.setVisible(true);
-        Escritorio.add(ac);
-        Escritorio.moveToFront(ac);
-        
+        AgregarCiudadView agrc = new AgregarCiudadView();
+        Escritorio.add(agrc);
+        agrc.setVisible(true);
+        agrc.moveToFront();
+
     }//GEN-LAST:event_AgregarCiudadActionPerformed
 
     private void BorrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarClienteActionPerformed
         // TODO add your handling code here:
         Escritorio.removeAll();
         Escritorio.repaint();
-        BorrarCliente bc = new BorrarCliente();
-        bc.setVisible(true);
-        Escritorio.add(bc);
-        Escritorio.moveToFront(bc);
+        BorrarCliente boc = new BorrarCliente();
+        Escritorio.add(boc);
+        boc.setVisible(true);
+        boc.moveToFront();
     }//GEN-LAST:event_BorrarClienteActionPerformed
 
     private void AgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarClienteActionPerformed
@@ -185,40 +206,53 @@ public class Panel_tp5_ej1 extends javax.swing.JFrame {
         Escritorio.removeAll();
         Escritorio.repaint();
         AgregarClienteView acl = new AgregarClienteView();
-        acl.setVisible(true);
         Escritorio.add(acl);
-        Escritorio.moveToFront(acl);
+        acl.setVisible(true);
+        acl.moveToFront();
     }//GEN-LAST:event_AgregarClienteActionPerformed
 
     private void BuscarClienteporCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarClienteporCiudadActionPerformed
         // TODO add your handling code here:
-     Escritorio.removeAll();
+        Escritorio.removeAll();
         Escritorio.repaint();
-        BuscarClienteporCIudadView bcp = new BuscarClienteporCIudadView();
-        bcp.setVisible(true);
-        Escritorio.add(bcp);
-        Escritorio.moveToFront(bcp);
+        BuscarClienteporCIudadView bucpc = new BuscarClienteporCIudadView();
+        Escritorio.add(bucpc);
+        bucpc.setVisible(true);
+        bucpc.moveToFront();
     }//GEN-LAST:event_BuscarClienteporCiudadActionPerformed
 
-    private void BusquedaClienteporCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BusquedaClienteporCiudadActionPerformed
+    private void jmDirectorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmDirectorioActionPerformed
         // TODO add your handling code here:
-        
-
-        
-       
-    }//GEN-LAST:event_BusquedaClienteporCiudadActionPerformed
+    }//GEN-LAST:event_jmDirectorioActionPerformed
 
     private void BuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarClienteActionPerformed
         // TODO add your handling code here:
-         Escritorio.removeAll();
+        Escritorio.removeAll();
         Escritorio.repaint();
-        BuscarCliente bc = new BuscarCliente();
-        bc.setVisible(true);
-        Escritorio.add(bc);
-        Escritorio.moveToFront(bc);
-        
-        
+        BuscarCliente buc = new BuscarCliente();
+        Escritorio.add(buc);
+        buc.setVisible(true);
+        buc.moveToFront();
     }//GEN-LAST:event_BuscarClienteActionPerformed
+
+    private void jmClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmClientesActionPerformed
+
+    private void jmCiudadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCiudadesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmCiudadesActionPerformed
+
+    private void jmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmSalirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmSalirActionPerformed
+
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        int opcion = JOptionPane.showConfirmDialog(this, "Desea salir de la aplicación?", "Confirmar salida", JOptionPane.YES_NO_OPTION);
+        if (opcion == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_SalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,6 +263,41 @@ public class Panel_tp5_ej1 extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        Contacto c1 = new Contacto(10000001L, "Ana Laura", "González", "Buenos Aires", "Avenida Rivadavia 1234");
+        Contacto c2 = new Contacto(10000002L, "Carlos Eduardo", "Martinez", "Cordoba", "Calle San Martin 567");
+        Contacto c3 = new Contacto(10000003L, "Sofía", "Rodriguez", "La Plata", "Calle 54 N° 487");
+        Contacto c4 = new Contacto(10000004L, "Juan Pablo", "Sánchez", "Mendoza", "Avenida Avenida Perú 987");
+        Contacto c5 = new Contacto(10000005L, "Lucía", "Martinez", "Mar del Plata", "Avenidad Juan B. Justo 2345");
+
+        directorio.agregarContacto(1145678901L, c1);
+        directorio.agregarContacto(3512345678L, c2);
+        directorio.agregarContacto(22142629000L, c3);
+        directorio.agregarContacto(2613456789L, c4);
+        directorio.agregarContacto(2235678901L, c5);
+
+        System.out.println("Buscar contacto por teléfono número 3512345678: ");
+        if (directorio.buscarContacto(3512345678L) != null) {
+            System.out.println(directorio.buscarContacto(3512345678L));
+        } else {
+            System.out.println("El número ingresado no se encontro");
+        }
+
+        System.out.println("\nBuscar números de teléfono con apellido Martinez: ");
+        System.out.println(directorio.buscarTelefono("Martinez"));
+
+        System.out.println("\nBuscar contacto en ciudad Mendoza: ");
+        System.out.println(directorio.buscarContactos("Mendoza"));
+
+        System.out.println("\nBorrar contacto con teléfono número 3512345678: ");
+        directorio.borrarContacto(3512345678L);
+
+        System.out.println("\nBuscar contacto por teléfono número 3512345678: ");
+        if (directorio.buscarContacto(3512345678L) != null) {
+            System.out.println(directorio.buscarContacto(3512345678L));
+        } else {
+            System.out.println("El número ingresado no se encontro");
+        }
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -263,11 +332,12 @@ public class Panel_tp5_ej1 extends javax.swing.JFrame {
     private javax.swing.JMenuItem BuscarCliente;
     private javax.swing.JMenuItem BuscarClienteporCiudad;
     private javax.swing.JMenuItem BuscarTelefono;
-    private javax.swing.JMenu BusquedaClienteporCiudad;
     private javax.swing.JDesktopPane Escritorio;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem Salir;
+    private javax.swing.JMenu jmCiudades;
+    private javax.swing.JMenu jmClientes;
+    private javax.swing.JMenu jmDirectorio;
+    private javax.swing.JMenu jmSalir;
+    private javax.swing.JMenuBar jmVistaPrincipal;
     // End of variables declaration//GEN-END:variables
 }

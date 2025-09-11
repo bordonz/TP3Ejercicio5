@@ -12,7 +12,7 @@ public class Contacto {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.ciudad = ciudad;
+        this.ciudad = ciudad.toUpperCase();
         this.direccion = direccion;
     }
 

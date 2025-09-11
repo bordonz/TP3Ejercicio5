@@ -11,16 +11,13 @@ public class DirectorioTelefonico {
 
     private TreeMap<Long, Contacto> contactos = new TreeMap<>();
 
-    public DirectorioTelefonico() {
-        contactos = new TreeMap<>();
-    }
-
     public void agregarContacto(Long telefono, Contacto contacto) {
         if (contactos.containsKey(telefono)) {
             System.out.println("El número ya está registrado");
             return;
         }
         contactos.put(telefono, contacto);
+        Panel_tp5_ej1.Ciudades.add(contacto.getCiudad());
     }
 
     public Contacto buscarContacto(Long telefono) {
@@ -47,12 +44,24 @@ public class DirectorioTelefonico {
         return listaDeContactos;
     }
 
-    public void borrarContacto(long borrarContacto) {
-        if (contactos.containsKey(borrarContacto)) {
-            contactos.remove(borrarContacto);
+    public void borrarContacto(Long telefono) {
+        if (contactos.containsKey(telefono)) {
+            contactos.remove(telefono);
             System.out.println("Contacto borrado");
         } else {
             System.out.println("El contacto no existe");
         }
+    }
+
+    public TreeMap<Long, Contacto> getContactos() {
+        return contactos;
+    }
+
+    public void setContactos(TreeMap<Long, Contacto> contactos) {
+        this.contactos = contactos;
+    }
+
+    public Set<Long> getTelefonos() {
+        return new TreeSet<>(contactos.keySet());
     }
 }

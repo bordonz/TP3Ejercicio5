@@ -5,6 +5,12 @@
  */
 package tp3ejercicio5;
 
+import java.awt.Component;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Usuario
@@ -18,6 +24,37 @@ public class AgregarCiudadView extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    public boolean validaCamposVacios(JPanel panel) {
+        for (Component comp : panel.getComponents()) {
+            if (comp instanceof JTextField) {
+                JTextField txt = (JTextField) comp;
+                if (txt.getText().trim().isEmpty()) {
+                    return false;
+                }
+            } else if (comp instanceof JComboBox) {
+                JComboBox combo = (JComboBox) comp;
+                Object selected = combo.getSelectedItem();
+                if (selected == null || selected.toString().trim().isEmpty()) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    public void limpiarCampos(JPanel panel) {
+        for (Component c : panel.getComponents()) {
+            if (c instanceof JTextField) {
+                JTextField caja = (JTextField) c;
+                caja.setText("");
+            } else if (c instanceof JComboBox) {
+                JComboBox combo = (JComboBox) c;
+                combo.setSelectedItem(null);
+            }
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,66 +64,128 @@ public class AgregarCiudadView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jpAgregarCiudad = new javax.swing.JPanel();
+        jlbAgregarCiuadad = new javax.swing.JLabel();
+        jlbNombreCiudad = new javax.swing.JLabel();
+        txtNombreCiudad = new javax.swing.JTextField();
+        jbtGuardar = new javax.swing.JButton();
+        jbtSalir = new javax.swing.JButton();
 
-        jLabel1.setText("Agregar Ciudad");
+        jpAgregarCiudad.setBackground(java.awt.Color.lightGray);
 
-        jLabel2.setText("Nombre Ciudad:");
+        jlbAgregarCiuadad.setBackground(java.awt.Color.lightGray);
+        jlbAgregarCiuadad.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jlbAgregarCiuadad.setForeground(java.awt.Color.black);
+        jlbAgregarCiuadad.setText("Agregar Ciudad");
 
-        jButton1.setText("Guardar");
+        jlbNombreCiudad.setBackground(java.awt.Color.lightGray);
+        jlbNombreCiudad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlbNombreCiudad.setForeground(java.awt.Color.black);
+        jlbNombreCiudad.setText("Nombre Ciudad:");
 
-        jButton2.setText("Salir");
+        txtNombreCiudad.setBackground(java.awt.Color.white);
+
+        jbtGuardar.setBackground(java.awt.Color.lightGray);
+        jbtGuardar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbtGuardar.setForeground(java.awt.Color.black);
+        jbtGuardar.setText("Guardar");
+        jbtGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtGuardarActionPerformed(evt);
+            }
+        });
+
+        jbtSalir.setBackground(java.awt.Color.lightGray);
+        jbtSalir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbtSalir.setForeground(java.awt.Color.black);
+        jbtSalir.setText("Salir");
+        jbtSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtSalirActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpAgregarCiudadLayout = new javax.swing.GroupLayout(jpAgregarCiudad);
+        jpAgregarCiudad.setLayout(jpAgregarCiudadLayout);
+        jpAgregarCiudadLayout.setHorizontalGroup(
+            jpAgregarCiudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpAgregarCiudadLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(jlbNombreCiudad)
+                .addGap(18, 18, 18)
+                .addComponent(txtNombreCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(45, Short.MAX_VALUE))
+            .addGroup(jpAgregarCiudadLayout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(jbtGuardar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbtSalir)
+                .addGap(95, 95, 95))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAgregarCiudadLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlbAgregarCiuadad)
+                .addGap(147, 147, 147))
+        );
+        jpAgregarCiudadLayout.setVerticalGroup(
+            jpAgregarCiudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpAgregarCiudadLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlbAgregarCiuadad)
+                .addGap(54, 54, 54)
+                .addGroup(jpAgregarCiudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNombreCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlbNombreCiudad))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addGroup(jpAgregarCiudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtGuardar)
+                    .addComponent(jbtSalir))
+                .addGap(26, 26, 26))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(35, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(86, 86, 86))
+            .addComponent(jpAgregarCiudad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(0, 16, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jpAgregarCiudad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbtGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtGuardarActionPerformed
+        if (!validaCamposVacios(jpAgregarCiudad)) {
+            JOptionPane.showMessageDialog(this, "Debe completar los datos para agregar una ciudad");
+            return;
+        }
+
+        String ciudad = txtNombreCiudad.getText().trim().toUpperCase();
+
+        if (Panel_tp5_ej1.Ciudades.add(ciudad)) {
+            JOptionPane.showMessageDialog(this, "La ciudad se agregó correctamente");
+        } else {
+            JOptionPane.showMessageDialog(this, "Inválido! La ciudad ya existe.");
+        }
+
+        limpiarCampos(jpAgregarCiudad);
+    }//GEN-LAST:event_jbtGuardarActionPerformed
+
+    private void jbtSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jbtSalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton jbtGuardar;
+    private javax.swing.JButton jbtSalir;
+    private javax.swing.JLabel jlbAgregarCiuadad;
+    private javax.swing.JLabel jlbNombreCiudad;
+    private javax.swing.JPanel jpAgregarCiudad;
+    private javax.swing.JTextField txtNombreCiudad;
     // End of variables declaration//GEN-END:variables
 }

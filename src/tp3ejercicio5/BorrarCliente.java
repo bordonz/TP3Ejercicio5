@@ -26,84 +26,129 @@ private DefaultTableModel modelo = new DefaultTableModel();
           modelo.addColumn("Direccion");
            modelo.addColumn("Ciudad");
             modelo.addColumn("Telefono");
-            jTBorrar.setModel(modelo);
+            tablaCliente.setModel(modelo);
    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTBorrar = new javax.swing.JTable();
+        jpBorrarCliente = new javax.swing.JPanel();
+        jlbBorrarCliente = new javax.swing.JLabel();
+        txtDni = new javax.swing.JTextField();
+        jlbDni = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listaDni = new javax.swing.JList<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaCliente = new javax.swing.JTable();
+        btnBorrarCliente = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
 
-        jLabel1.setText("DNI:");
+        jpBorrarCliente.setBackground(java.awt.Color.lightGray);
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Borrar Cliente");
+        jlbBorrarCliente.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jlbBorrarCliente.setForeground(new java.awt.Color(0, 0, 0));
+        jlbBorrarCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbBorrarCliente.setText("Borrar Cliente");
 
-        jTBorrar.setModel(new javax.swing.table.DefaultTableModel(
+        txtDni.setBackground(java.awt.Color.white);
+        txtDni.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtDni.setForeground(java.awt.Color.black);
+
+        jlbDni.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlbDni.setForeground(java.awt.Color.black);
+        jlbDni.setText("DNI:");
+
+        listaDni.setBackground(java.awt.Color.white);
+        listaDni.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        listaDni.setForeground(java.awt.Color.black);
+        jScrollPane2.setViewportView(listaDni);
+
+        tablaCliente.setBackground(java.awt.Color.white);
+        tablaCliente.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tablaCliente.setForeground(java.awt.Color.black);
+        tablaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "DNI", "Apellido", "Nombre", "Dirección", "Ciudad", "Teléfono"
             }
         ));
-        jScrollPane1.setViewportView(jTBorrar);
+        jScrollPane1.setViewportView(tablaCliente);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(jList1);
+        btnBorrarCliente.setBackground(java.awt.Color.lightGray);
+        btnBorrarCliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnBorrarCliente.setForeground(java.awt.Color.black);
+        btnBorrarCliente.setText("Borrar Cliente");
+
+        btnSalir.setBackground(java.awt.Color.lightGray);
+        btnSalir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnSalir.setForeground(java.awt.Color.black);
+        btnSalir.setText("Salir");
+
+        javax.swing.GroupLayout jpBorrarClienteLayout = new javax.swing.GroupLayout(jpBorrarCliente);
+        jpBorrarCliente.setLayout(jpBorrarClienteLayout);
+        jpBorrarClienteLayout.setHorizontalGroup(
+            jpBorrarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpBorrarClienteLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jpBorrarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpBorrarClienteLayout.createSequentialGroup()
+                        .addGap(317, 317, 317)
+                        .addComponent(jlbBorrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpBorrarClienteLayout.createSequentialGroup()
+                        .addComponent(jlbDni)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jpBorrarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(txtDni, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBorrarClienteLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnBorrarCliente)
+                .addGap(202, 202, 202)
+                .addComponent(btnSalir)
+                .addGap(38, 38, 38))
+        );
+        jpBorrarClienteLayout.setVerticalGroup(
+            jpBorrarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpBorrarClienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlbBorrarCliente)
+                .addGap(42, 42, 42)
+                .addGroup(jpBorrarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpBorrarClienteLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
+                        .addGroup(jpBorrarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnBorrarCliente)
+                            .addComponent(btnSalir))
+                        .addGap(31, 31, 31))
+                    .addGroup(jpBorrarClienteLayout.createSequentialGroup()
+                        .addGroup(jpBorrarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpBorrarClienteLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jlbDni))
+                            .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(345, 345, 345)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+            .addComponent(jpBorrarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addComponent(jpBorrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         pack();
@@ -111,12 +156,15 @@ private DefaultTableModel modelo = new DefaultTableModel();
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JButton btnBorrarCliente;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTBorrar;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel jlbBorrarCliente;
+    private javax.swing.JLabel jlbDni;
+    private javax.swing.JPanel jpBorrarCliente;
+    private javax.swing.JList<String> listaDni;
+    private javax.swing.JTable tablaCliente;
+    private javax.swing.JTextField txtDni;
     // End of variables declaration//GEN-END:variables
 }

@@ -35,8 +35,8 @@ public class Panel_tp5_ej1 extends javax.swing.JFrame {
         jmVistaPrincipal = new javax.swing.JMenuBar();
         jmClientes = new javax.swing.JMenu();
         AgregarCliente = new javax.swing.JMenuItem();
-        BorrarCliente = new javax.swing.JMenuItem();
         BuscarCliente = new javax.swing.JMenuItem();
+        BorrarCliente = new javax.swing.JMenuItem();
         jmDirectorio = new javax.swing.JMenu();
         BuscarClienteporCiudad = new javax.swing.JMenuItem();
         BuscarTelefono = new javax.swing.JMenuItem();
@@ -74,15 +74,6 @@ public class Panel_tp5_ej1 extends javax.swing.JFrame {
         });
         jmClientes.add(AgregarCliente);
 
-        BorrarCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
-        BorrarCliente.setText("Borrar Cliente");
-        BorrarCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BorrarClienteActionPerformed(evt);
-            }
-        });
-        jmClientes.add(BorrarCliente);
-
         BuscarCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         BuscarCliente.setText("Buscar Cliente");
         BuscarCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +82,15 @@ public class Panel_tp5_ej1 extends javax.swing.JFrame {
             }
         });
         jmClientes.add(BuscarCliente);
+
+        BorrarCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        BorrarCliente.setText("Borrar Cliente");
+        BorrarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BorrarClienteActionPerformed(evt);
+            }
+        });
+        jmClientes.add(BorrarCliente);
 
         jmVistaPrincipal.add(jmClientes);
 

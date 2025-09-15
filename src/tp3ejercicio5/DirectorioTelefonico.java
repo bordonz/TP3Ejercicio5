@@ -8,7 +8,7 @@ import java.util.TreeSet;
 
 public class DirectorioTelefonico {
 
-    public static TreeMap<Long, Contacto> contactos = new TreeMap<>();
+    private TreeMap<Long, Contacto> contactos = new TreeMap<>();
 
     public void agregarContacto(Long telefono, Contacto contacto) {
         if (contactos.containsKey(telefono)) {

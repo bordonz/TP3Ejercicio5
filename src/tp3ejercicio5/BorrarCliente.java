@@ -5,6 +5,15 @@
  */
 package tp3ejercicio5;
 
+import java.awt.Component;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import javax.swing.DefaultListModel;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -12,22 +21,63 @@ import javax.swing.table.DefaultTableModel;
  * @author Usuario
  */
 public class BorrarCliente extends javax.swing.JInternalFrame {
-private DefaultTableModel modelo = new DefaultTableModel();
-   
+//private DefaultTableModel modelo = new DefaultTableModel();
+
     public BorrarCliente() {
         initComponents();
-        ArmarCabecera();
+        llenarListaDni();
+//        ArmarCabecera();
     }
 
-   public void ArmarCabecera(){
-       modelo.addColumn("DNI");
-        modelo.addColumn("Apellido");
-         modelo.addColumn("Nombre");
-          modelo.addColumn("Direccion");
-           modelo.addColumn("Ciudad");
-            modelo.addColumn("Telefono");
-            tablaCliente.setModel(modelo);
-   }
+//   public void ArmarCabecera(){
+//       modelo.addColumn("DNI");
+//        modelo.addColumn("Apellido");
+//         modelo.addColumn("Nombre");
+//          modelo.addColumn("Direccion");
+//           modelo.addColumn("Ciudad");
+//            modelo.addColumn("Telefono");
+//            tablaCliente.setModel(modelo);
+//   }
+    public void llenarListaDni() {
+        DefaultListModel<Long> modelo = new DefaultListModel<>();
+        Set<Long> dniUnicos = new HashSet<>();
+
+        for (Contacto contacto : Panel_tp5_ej1.directorio.getContactos().values()) {
+            if (!dniUnicos.contains(contacto.getDni())) {
+                dniUnicos.add(contacto.getDni());
+                modelo.addElement(contacto.getDni());
+            }
+        }
+
+        listaDni.setModel(modelo);
+    }
+
+    public void cargarDatosEnTabla(long dniSeleccionado) {
+        DefaultTableModel model = (DefaultTableModel) tablaCliente.getModel();
+        model.setRowCount(0);
+
+        for (Map.Entry<Long, Contacto> entry : Panel_tp5_ej1.directorio.getContactos().entrySet()) {
+            Contacto value = entry.getValue();
+
+            if (value.getDni() == dniSeleccionado) {
+                Object[] fila = {value.getDni(), value.getApellido(), value.getNombre(), value.getDireccion(), value.getCiudad(), entry.getKey()};
+                model.addRow(fila);
+            }
+        }
+    }
+
+    public void limpiarCampos(JPanel panel) {
+        for (Component c : panel.getComponents()) {
+            if (c instanceof JTextField) {
+                JTextField caja = (JTextField) c;
+                caja.setText("");
+            } else if (c instanceof JComboBox) {
+                JComboBox combo = (JComboBox) c;
+                combo.setSelectedItem(null);
+            }
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -61,6 +111,11 @@ private DefaultTableModel modelo = new DefaultTableModel();
         listaDni.setBackground(java.awt.Color.white);
         listaDni.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         listaDni.setForeground(java.awt.Color.black);
+        listaDni.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaDniValueChanged(evt);
+            }
+        });
         jScrollPane2.setViewportView(listaDni);
 
         tablaCliente.setBackground(java.awt.Color.white);
@@ -80,11 +135,21 @@ private DefaultTableModel modelo = new DefaultTableModel();
         btnBorrarCliente.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnBorrarCliente.setForeground(java.awt.Color.black);
         btnBorrarCliente.setText("Borrar Cliente");
+        btnBorrarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarClienteActionPerformed(evt);
+            }
+        });
 
         btnSalir.setBackground(java.awt.Color.lightGray);
         btnSalir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnSalir.setForeground(java.awt.Color.black);
         btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpBorrarClienteLayout = new javax.swing.GroupLayout(jpBorrarCliente);
         jpBorrarCliente.setLayout(jpBorrarClienteLayout);
@@ -154,6 +219,51 @@ private DefaultTableModel modelo = new DefaultTableModel();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void listaDniValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaDniValueChanged
+        if (!evt.getValueIsAdjusting()) {
+            Long dniSeleccionado = listaDni.getSelectedValue();
+            if (dniSeleccionado != null) {
+                txtDni.setText(String.valueOf(dniSeleccionado));
+                cargarDatosEnTabla(dniSeleccionado);
+            }
+        }
+    }//GEN-LAST:event_listaDniValueChanged
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnBorrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarClienteActionPerformed
+        Long dniSeleccionado = listaDni.getSelectedValue();
+
+        if (dniSeleccionado == null) {
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione un DNI para borrar", "Campos incompletos", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        Long telefonoABorrar = null;
+        for (Map.Entry<Long, Contacto> entry : Panel_tp5_ej1.directorio.getContactos().entrySet()) {
+            if (entry.getValue().getDni() == dniSeleccionado) {
+                telefonoABorrar = entry.getKey();
+                break;
+            }
+        }
+
+        if (telefonoABorrar != null) {
+            Panel_tp5_ej1.directorio.borrarContacto(telefonoABorrar);
+            llenarListaDni();
+
+            DefaultTableModel model = (DefaultTableModel) tablaCliente.getModel();
+            model.setRowCount(0);
+
+            limpiarCampos(jpBorrarCliente);
+
+            JOptionPane.showMessageDialog(this, "El cliente se elimino correctamente.", "Confirmación:", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "El cliente no se encontró para eliminar", "Atención!!!", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnBorrarClienteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBorrarCliente;
@@ -163,7 +273,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
     private javax.swing.JLabel jlbBorrarCliente;
     private javax.swing.JLabel jlbDni;
     private javax.swing.JPanel jpBorrarCliente;
-    private javax.swing.JList<String> listaDni;
+    private javax.swing.JList<Long> listaDni;
     private javax.swing.JTable tablaCliente;
     private javax.swing.JTextField txtDni;
     // End of variables declaration//GEN-END:variables

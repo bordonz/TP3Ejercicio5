@@ -18,8 +18,8 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
      */
     public BuscarCliente() {
         initComponents();
-        listTelefonos.setModel(new DefaultListModel<>());
-        
+        listaTelefonos.setModel(new DefaultListModel<>());
+
     }
 
     /**
@@ -30,55 +30,60 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jpBusquedaClientes = new javax.swing.JPanel();
+        jlbBusquedaCliente = new javax.swing.JLabel();
+        jlbTelefono = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        txtDni = new javax.swing.JTextField();
-        txtApellido = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
-        txtCiudad = new javax.swing.JTextField();
-        txtDomicilio = new javax.swing.JTextField();
-        btnSalir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        listTelefonos = new javax.swing.JList<>();
+        listaTelefonos = new javax.swing.JList<>();
+        btnSalir = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jlbDni = new javax.swing.JLabel();
+        txtDni = new javax.swing.JTextField();
+        jlbApellido = new javax.swing.JLabel();
+        txtApellido = new javax.swing.JTextField();
+        jlbNombre = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        jlbCiudad = new javax.swing.JLabel();
+        txtCiudad = new javax.swing.JTextField();
+        jlbDomicilio = new javax.swing.JLabel();
+        txtDomicilio = new javax.swing.JTextField();
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel1.setText("Busqueda de Clientes");
+        jpBusquedaClientes.setBackground(java.awt.Color.lightGray);
 
-        jLabel2.setText("Telefono:");
+        jlbBusquedaCliente.setBackground(java.awt.Color.lightGray);
+        jlbBusquedaCliente.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jlbBusquedaCliente.setForeground(java.awt.Color.black);
+        jlbBusquedaCliente.setText("Búsqueda de Clientes");
 
+        jlbTelefono.setBackground(java.awt.Color.lightGray);
+        jlbTelefono.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlbTelefono.setForeground(java.awt.Color.black);
+        jlbTelefono.setText("Teléfono:");
+
+        txtTelefono.setBackground(java.awt.Color.white);
+        txtTelefono.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTelefonoKeyReleased(evt);
             }
         });
 
-        jLabel3.setText("DNI:");
+        listaTelefonos.setBackground(java.awt.Color.white);
+        listaTelefonos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        listaTelefonos.setForeground(java.awt.Color.black);
+        listaTelefonos.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaTelefonosValueChanged(evt);
+            }
+        });
+        jScrollPane1.setViewportView(listaTelefonos);
 
-        jLabel4.setText("Apellido:");
-
-        jLabel5.setText("Nombre:");
-
-        jLabel6.setText("Ciudad:");
-
-        jLabel7.setText("Domicilio:");
-
-        txtDni.setEditable(false);
-
-        txtApellido.setEditable(false);
-
-        txtNombre.setEditable(false);
-
-        txtCiudad.setEditable(false);
-
-        txtDomicilio.setEditable(false);
-
+        btnSalir.setBackground(java.awt.Color.lightGray);
+        btnSalir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnSalir.setForeground(java.awt.Color.black);
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,109 +91,195 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        listTelefonos.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        listTelefonos.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                listTelefonosValueChanged(evt);
-            }
-        });
-        jScrollPane1.setViewportView(listTelefonos);
+        jPanel1.setBackground(java.awt.Color.lightGray);
+        jPanel1.setForeground(java.awt.Color.black);
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        jlbDni.setBackground(java.awt.Color.lightGray);
+        jlbDni.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlbDni.setForeground(java.awt.Color.black);
+        jlbDni.setText("DNI:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 32, 0, 0);
+        jPanel1.add(jlbDni, gridBagConstraints);
+
+        txtDni.setEditable(false);
+        txtDni.setBackground(java.awt.Color.white);
+        txtDni.setForeground(java.awt.Color.black);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 226;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(17, 21, 0, 0);
+        jPanel1.add(txtDni, gridBagConstraints);
+
+        jlbApellido.setBackground(java.awt.Color.lightGray);
+        jlbApellido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlbApellido.setForeground(java.awt.Color.black);
+        jlbApellido.setText("Apellido:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(15, 6, 0, 0);
+        jPanel1.add(jlbApellido, gridBagConstraints);
+
+        txtApellido.setEditable(false);
+        txtApellido.setBackground(java.awt.Color.white);
+        txtApellido.setForeground(java.awt.Color.black);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 226;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(12, 21, 0, 0);
+        jPanel1.add(txtApellido, gridBagConstraints);
+
+        jlbNombre.setBackground(java.awt.Color.lightGray);
+        jlbNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlbNombre.setForeground(java.awt.Color.black);
+        jlbNombre.setText("Nombre:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(21, 6, 0, 0);
+        jPanel1.add(jlbNombre, gridBagConstraints);
+
+        txtNombre.setEditable(false);
+        txtNombre.setBackground(java.awt.Color.white);
+        txtNombre.setForeground(java.awt.Color.black);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 226;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 21, 0, 0);
+        jPanel1.add(txtNombre, gridBagConstraints);
+
+        jlbCiudad.setBackground(java.awt.Color.lightGray);
+        jlbCiudad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlbCiudad.setForeground(java.awt.Color.black);
+        jlbCiudad.setText("Ciudad:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(25, 14, 0, 0);
+        jPanel1.add(jlbCiudad, gridBagConstraints);
+
+        txtCiudad.setEditable(false);
+        txtCiudad.setBackground(java.awt.Color.white);
+        txtCiudad.setForeground(java.awt.Color.black);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 226;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(22, 21, 0, 0);
+        jPanel1.add(txtCiudad, gridBagConstraints);
+
+        jlbDomicilio.setBackground(java.awt.Color.lightGray);
+        jlbDomicilio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlbDomicilio.setForeground(java.awt.Color.black);
+        jlbDomicilio.setText("Domicilio:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(21, 6, 0, 0);
+        jPanel1.add(jlbDomicilio, gridBagConstraints);
+
+        txtDomicilio.setEditable(false);
+        txtDomicilio.setBackground(java.awt.Color.white);
+        txtDomicilio.setForeground(java.awt.Color.black);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 226;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 21, 0, 0);
+        jPanel1.add(txtDomicilio, gridBagConstraints);
+
+        javax.swing.GroupLayout jpBusquedaClientesLayout = new javax.swing.GroupLayout(jpBusquedaClientes);
+        jpBusquedaClientes.setLayout(jpBusquedaClientesLayout);
+        jpBusquedaClientesLayout.setHorizontalGroup(
+            jpBusquedaClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBusquedaClientesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jpBusquedaClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jpBusquedaClientesLayout.createSequentialGroup()
+                        .addComponent(btnSalir)
+                        .addGap(125, 125, 125))
+                    .addGroup(jpBusquedaClientesLayout.createSequentialGroup()
+                        .addComponent(jlbTelefono)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jpBusquedaClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))
+                        .addGap(32, 32, 32)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(115, 115, 115))))
+            .addGroup(jpBusquedaClientesLayout.createSequentialGroup()
+                .addGap(227, 227, 227)
+                .addComponent(jlbBusquedaCliente)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jpBusquedaClientesLayout.setVerticalGroup(
+            jpBusquedaClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpBusquedaClientesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlbBusquedaCliente)
+                .addGap(26, 26, 26)
+                .addGroup(jpBusquedaClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpBusquedaClientesLayout.createSequentialGroup()
+                        .addGroup(jpBusquedaClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlbTelefono)
+                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jpBusquedaClientesLayout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                        .addComponent(btnSalir)
+                        .addGap(23, 23, 23))))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnSalir)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(48, 48, 48)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel6))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtCiudad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(141, 141, 141)
-                                        .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addContainerGap(37, Short.MAX_VALUE))
+            .addComponent(jpBusquedaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(txtDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)))
-                .addComponent(btnSalir)
-                .addContainerGap(18, Short.MAX_VALUE))
+            .addComponent(jpBusquedaClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void llenarLista(String t1){
+
+    private void llenarLista(String t1) {
         DefaultListModel<String> modelo = new DefaultListModel<>();
-        for (Long telefono : DirectorioTelefonico.contactos.keySet()) {  
+        for (Long telefono : Panel_tp5_ej1.directorio.getContactos().keySet()) {
             if (telefono.toString().contains(t1)) {
                 modelo.addElement(telefono.toString());
             }
         }
-        listTelefonos.setModel(modelo);
+        listaTelefonos.setModel(modelo);
     }
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.dispose();
@@ -198,45 +289,57 @@ public class BuscarCliente extends javax.swing.JInternalFrame {
         String t1 = txtTelefono.getText().trim();
         llenarLista(t1);
     }//GEN-LAST:event_txtTelefonoKeyReleased
-    
-    private void limpiarCampos(){
+
+    private void limpiarCampos() {
         txtDni.setText("");
         txtApellido.setText("");
         txtCiudad.setText("");
         txtDomicilio.setText("");
         txtNombre.setText("");
     }
-    private void listTelefonosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listTelefonosValueChanged
-            Object o1 = listTelefonos.getSelectedValue();
-            if (o1 != null) {
-                String parse = (String) listTelefonos.getSelectedValue();
-                Long telefono = Long.parseLong(parse);
+    private void listaTelefonosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaTelefonosValueChanged
+        if (!evt.getValueIsAdjusting()) {
+            String seleccion = listaTelefonos.getSelectedValue();
+            if (seleccion != null) {
                 try {
-                    txtDni.setText(String.valueOf(DirectorioTelefonico.contactos.get(telefono).getDni()));
-                    txtApellido.setText(DirectorioTelefonico.contactos.get(telefono).getApellido());
-                    txtCiudad.setText(DirectorioTelefonico.contactos.get(telefono).getCiudad());
-                    txtDomicilio.setText(DirectorioTelefonico.contactos.get(telefono).getDireccion());
-                    txtNombre.setText(DirectorioTelefonico.contactos.get(telefono).getNombre());
+                    Long telefono = Long.parseLong(seleccion);
+                    Contacto c = Panel_tp5_ej1.directorio.getContactos().get(telefono);
+
+                    if (c != null) {
+                        txtDni.setText(String.valueOf(c.getDni()));
+                        txtApellido.setText(c.getApellido());
+                        txtNombre.setText(c.getNombre());
+                        txtCiudad.setText(c.getCiudad());
+                        txtDomicilio.setText(c.getDireccion());
+                    } else {
+                        limpiarCampos();
+                    }
                 } catch (NumberFormatException e) {
+                    limpiarCampos();
+                } catch (NullPointerException e) {
                     limpiarCampos();
                 }
             } else {
                 limpiarCampos();
             }
-    }//GEN-LAST:event_listTelefonosValueChanged
+
+        }
+    }//GEN-LAST:event_listaTelefonosValueChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalir;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> listTelefonos;
+    private javax.swing.JLabel jlbApellido;
+    private javax.swing.JLabel jlbBusquedaCliente;
+    private javax.swing.JLabel jlbCiudad;
+    private javax.swing.JLabel jlbDni;
+    private javax.swing.JLabel jlbDomicilio;
+    private javax.swing.JLabel jlbNombre;
+    private javax.swing.JLabel jlbTelefono;
+    private javax.swing.JPanel jpBusquedaClientes;
+    private javax.swing.JList<String> listaTelefonos;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtCiudad;
     private javax.swing.JTextField txtDni;

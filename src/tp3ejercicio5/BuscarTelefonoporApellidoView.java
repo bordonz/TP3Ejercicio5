@@ -51,6 +51,23 @@ public class BuscarTelefonoporApellidoView extends javax.swing.JInternalFrame {
 
     }
 
+    public void filtrarListaApellidos(String filtro) {
+        DefaultListModel<String> modelo = new DefaultListModel<>();
+        Set<String> apellidosUnicos = new HashSet<>();
+
+        for (Contacto contacto : Panel_tp5_ej1.directorio.getContactos().values()) {
+            String apellido = contacto.getApellido();
+            if (apellido.toLowerCase().contains(filtro.toLowerCase()) && !apellidosUnicos.contains(contacto.getApellido())) {
+                apellidosUnicos.add(contacto.getApellido());
+                modelo.addElement(contacto.getApellido());
+            }
+
+        }
+
+        listaApellido.setModel(modelo);
+
+    }
+
     public void cargarDatosEnTabla(String apellidoSeleccionado) {
         DefaultTableModel model = (DefaultTableModel) tablaCliente.getModel();
         model.setRowCount(0);
@@ -94,6 +111,11 @@ public class BuscarTelefonoporApellidoView extends javax.swing.JInternalFrame {
 
         txtApellido.setBackground(java.awt.Color.white);
         txtApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtApellidoKeyReleased(evt);
+            }
+        });
 
         listaApellido.setBackground(java.awt.Color.white);
         listaApellido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -199,6 +221,11 @@ public class BuscarTelefonoporApellidoView extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_listaApellidoValueChanged
+
+    private void txtApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyReleased
+        String filtro = txtApellido.getText().trim();
+        filtrarListaApellidos(filtro);
+    }//GEN-LAST:event_txtApellidoKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

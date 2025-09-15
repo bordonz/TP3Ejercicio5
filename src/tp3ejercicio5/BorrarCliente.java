@@ -41,31 +41,46 @@ public class BorrarCliente extends javax.swing.JInternalFrame {
     public void llenarListaDni() {
         DefaultListModel<Long> modelo = new DefaultListModel<>();
         Set<Long> dniUnicos = new HashSet<>();
-
+        
         for (Contacto contacto : Panel_tp5_ej1.directorio.getContactos().values()) {
             if (!dniUnicos.contains(contacto.getDni())) {
                 dniUnicos.add(contacto.getDni());
                 modelo.addElement(contacto.getDni());
             }
         }
-
+        
         listaDni.setModel(modelo);
     }
-
+    
+    public void filtrarListaDni(String filtro) {
+        DefaultListModel<Long> modelo = new DefaultListModel<>();
+        Set<Long> dniUnicos = new HashSet<>();
+        
+        for (Contacto contacto : Panel_tp5_ej1.directorio.getContactos().values()) {
+            String dniS = String.valueOf(contacto.getDni());
+            if (dniS.contains(filtro) && !dniUnicos.contains(contacto.getDni())) {
+                dniUnicos.add(contacto.getDni());
+                modelo.addElement(contacto.getDni());
+            }
+        }
+        
+        listaDni.setModel(modelo);
+    }
+    
     public void cargarDatosEnTabla(long dniSeleccionado) {
         DefaultTableModel model = (DefaultTableModel) tablaCliente.getModel();
         model.setRowCount(0);
-
+        
         for (Map.Entry<Long, Contacto> entry : Panel_tp5_ej1.directorio.getContactos().entrySet()) {
             Contacto value = entry.getValue();
-
+            
             if (value.getDni() == dniSeleccionado) {
                 Object[] fila = {value.getDni(), value.getApellido(), value.getNombre(), value.getDireccion(), value.getCiudad(), entry.getKey()};
                 model.addRow(fila);
             }
         }
     }
-
+    
     public void limpiarCampos(JPanel panel) {
         for (Component c : panel.getComponents()) {
             if (c instanceof JTextField) {
@@ -77,7 +92,7 @@ public class BorrarCliente extends javax.swing.JInternalFrame {
             }
         }
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -103,6 +118,11 @@ public class BorrarCliente extends javax.swing.JInternalFrame {
         txtDni.setBackground(java.awt.Color.white);
         txtDni.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtDni.setForeground(java.awt.Color.black);
+        txtDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDniKeyReleased(evt);
+            }
+        });
 
         jlbDni.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlbDni.setForeground(java.awt.Color.black);
@@ -235,12 +255,12 @@ public class BorrarCliente extends javax.swing.JInternalFrame {
 
     private void btnBorrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarClienteActionPerformed
         Long dniSeleccionado = listaDni.getSelectedValue();
-
+        
         if (dniSeleccionado == null) {
             JOptionPane.showMessageDialog(this, "Por favor, seleccione un DNI para borrar", "Campos incompletos", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+        
         Long telefonoABorrar = null;
         for (Map.Entry<Long, Contacto> entry : Panel_tp5_ej1.directorio.getContactos().entrySet()) {
             if (entry.getValue().getDni() == dniSeleccionado) {
@@ -248,21 +268,26 @@ public class BorrarCliente extends javax.swing.JInternalFrame {
                 break;
             }
         }
-
+        
         if (telefonoABorrar != null) {
             Panel_tp5_ej1.directorio.borrarContacto(telefonoABorrar);
             llenarListaDni();
-
+            
             DefaultTableModel model = (DefaultTableModel) tablaCliente.getModel();
             model.setRowCount(0);
-
+            
             limpiarCampos(jpBorrarCliente);
-
+            
             JOptionPane.showMessageDialog(this, "El cliente se elimino correctamente.", "Confirmación:", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "El cliente no se encontró para eliminar", "Atención!!!", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnBorrarClienteActionPerformed
+
+    private void txtDniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyReleased
+        String filtro = txtDni.getText().trim();
+        filtrarListaDni(filtro);
+    }//GEN-LAST:event_txtDniKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

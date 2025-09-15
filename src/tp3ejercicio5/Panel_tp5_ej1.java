@@ -215,7 +215,7 @@ public class Panel_tp5_ej1 extends javax.swing.JFrame {
         // TODO add your handling code here:
         Escritorio.removeAll();
         Escritorio.repaint();
-        BuscarClienteporCIudadView bucpc = new BuscarClienteporCIudadView();
+        BuscarClienteporCiudadView bucpc = new BuscarClienteporCiudadView();
         Escritorio.add(bucpc);
         bucpc.setVisible(true);
         bucpc.moveToFront();

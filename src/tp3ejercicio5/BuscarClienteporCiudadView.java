@@ -5,32 +5,59 @@
  */
 package tp3ejercicio5;
 
+import java.awt.event.ItemEvent;
+import java.util.Map;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Usuario
  */
-public class BuscarClienteporCIudadView extends javax.swing.JInternalFrame {
+public class BuscarClienteporCiudadView extends javax.swing.JInternalFrame {
 
-   private DefaultTableModel modelo = new DefaultTableModel();
-   
-    public BuscarClienteporCIudadView() {
+    private DefaultTableModel modelo = new DefaultTableModel();
+
+    public BuscarClienteporCiudadView() {
         initComponents();
+        llenarComboCiudades();
         ArmarCabecera();
     }
 
-   public void ArmarCabecera(){
-       modelo.addColumn("DNI");
+    public void ArmarCabecera() {
+        modelo.addColumn("DNI");
         modelo.addColumn("Apellido");
-         modelo.addColumn("Nombre");
-          modelo.addColumn("Direccion");
-           modelo.addColumn("Ciudad");
-            modelo.addColumn("Telefono");
-            tablaCliente.setModel(modelo);
-   }
-   
-   
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Direccion");
+        modelo.addColumn("Ciudad");
+        modelo.addColumn("Telefono");
+        tablaCliente.setModel(modelo);
+    }
+
+    private void llenarComboCiudades() {
+        cmbCiudades.removeAllItems();
+        cmbCiudades.addItem(null);
+
+        for (String ciudad : Panel_tp5_ej1.Ciudades) {
+            cmbCiudades.addItem(ciudad);
+        }
+
+        cmbCiudades.setSelectedIndex(0);
+    }
+
+    public void cargarDatosEnTabla(String ciudadSeleccionada) {
+        DefaultTableModel model = (DefaultTableModel) tablaCliente.getModel();
+        model.setRowCount(0);
+
+        for (Map.Entry<Long, Contacto> entry : Panel_tp5_ej1.directorio.getContactos().entrySet()) {
+            Contacto value = entry.getValue();
+
+            if (value.getCiudad().equals(ciudadSeleccionada)) {
+                Object[] fila = {value.getDni(), value.getApellido(), value.getNombre(), value.getDireccion(), value.getCiudad(), entry.getKey()};
+                model.addRow(fila);
+            }
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -57,6 +84,12 @@ public class BuscarClienteporCIudadView extends javax.swing.JInternalFrame {
         jlbCiudades.setForeground(java.awt.Color.black);
         jlbCiudades.setText("Ciudades:");
 
+        cmbCiudades.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbCiudadesItemStateChanged(evt);
+            }
+        });
+
         tablaCliente.setBackground(java.awt.Color.white);
         tablaCliente.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tablaCliente.setForeground(java.awt.Color.black);
@@ -74,6 +107,11 @@ public class BuscarClienteporCIudadView extends javax.swing.JInternalFrame {
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton1.setForeground(java.awt.Color.black);
         jButton1.setText("Salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpBuscarClientePorCiudadLayout = new javax.swing.GroupLayout(jpBuscarClientePorCiudad);
         jpBuscarClientePorCiudad.setLayout(jpBuscarClientePorCiudadLayout);
@@ -132,6 +170,19 @@ public class BuscarClienteporCIudadView extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmbCiudadesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCiudadesItemStateChanged
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            String ciudadSeleccionada = (String) cmbCiudades.getSelectedItem();
+            if (ciudadSeleccionada != null && !ciudadSeleccionada.isEmpty()) {
+                cargarDatosEnTabla(ciudadSeleccionada);
+            }
+        }
+    }//GEN-LAST:event_cmbCiudadesItemStateChanged
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

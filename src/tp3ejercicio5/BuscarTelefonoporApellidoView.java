@@ -5,6 +5,10 @@
  */
 package tp3ejercicio5;
 
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -14,60 +18,97 @@ import javax.swing.table.DefaultTableModel;
 public class BuscarTelefonoporApellidoView extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modelo = new DefaultTableModel();
-    
+
     public BuscarTelefonoporApellidoView() {
         initComponents();
-         ArmarCabecera();
+        llenarListaApellido();
+        ArmarCabecera();
     }
 
-   public void ArmarCabecera(){
-       modelo.addColumn("DNI");
+    public void ArmarCabecera() {
+        modelo.addColumn("DNI");
         modelo.addColumn("Apellido");
-         modelo.addColumn("Nombre");
-          modelo.addColumn("Direccion");
-           modelo.addColumn("Ciudad");
-            modelo.addColumn("Telefono");
-            jTBuscarApellido.setModel(modelo);
-   }
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Direccion");
+        modelo.addColumn("Ciudad");
+        modelo.addColumn("Telefono");
+        tablaCliente.setModel(modelo);
+    }
+
+    public void llenarListaApellido() {
+        DefaultListModel<String> modelo = new DefaultListModel<>();
+        Set<String> apellidosUnicos = new HashSet<>();
+
+        for (Contacto contacto : Panel_tp5_ej1.directorio.getContactos().values()) {
+            apellidosUnicos.add(contacto.getApellido());
+        }
+
+        for (String apellido : apellidosUnicos) {
+            modelo.addElement(apellido);
+        }
+
+        listaApellido.setModel(modelo);
+
+    }
+
+    public void cargarDatosEnTabla(String apellidoSeleccionado) {
+        DefaultTableModel model = (DefaultTableModel) tablaCliente.getModel();
+        model.setRowCount(0);
+
+        for (Map.Entry<Long, Contacto> aux : Panel_tp5_ej1.directorio.getContactos().entrySet()) {
+            Contacto c = aux.getValue();
+
+            if (c.getApellido().equals(apellidoSeleccionado)) {
+                Object[] fila = {c.getDni(), c.getApellido(), c.getNombre(), c.getDireccion(), c.getCiudad(), aux.getKey()};
+                model.addRow(fila);
+            }
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jpBuscarTelPorApellido = new javax.swing.JPanel();
+        jlbBuscarTelPorApellido = new javax.swing.JLabel();
+        jlbApellido = new javax.swing.JLabel();
+        txtApellido = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listaApellido = new javax.swing.JList<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTBuscarApellido = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        tablaCliente = new javax.swing.JTable();
+        btnSalir = new javax.swing.JButton();
 
-        jPanel1.setBackground(java.awt.Color.lightGray);
-        jPanel1.setForeground(java.awt.Color.black);
+        jpBuscarTelPorApellido.setBackground(java.awt.Color.lightGray);
+        jpBuscarTelPorApellido.setForeground(java.awt.Color.black);
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Buscar Telefono Por Apellido");
+        jlbBuscarTelPorApellido.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jlbBuscarTelPorApellido.setForeground(new java.awt.Color(0, 0, 0));
+        jlbBuscarTelPorApellido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbBuscarTelPorApellido.setText("Buscar Teléfono Por Apellido");
 
-        jLabel1.setBackground(java.awt.Color.lightGray);
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setForeground(java.awt.Color.black);
-        jLabel1.setText("Apellido:");
+        jlbApellido.setBackground(java.awt.Color.lightGray);
+        jlbApellido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlbApellido.setForeground(java.awt.Color.black);
+        jlbApellido.setText("Apellido:");
 
-        jTextField1.setBackground(java.awt.Color.white);
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtApellido.setBackground(java.awt.Color.white);
+        txtApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-        jList1.setBackground(java.awt.Color.white);
-        jList1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jList1.setForeground(java.awt.Color.black);
-        jScrollPane2.setViewportView(jList1);
+        listaApellido.setBackground(java.awt.Color.white);
+        listaApellido.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        listaApellido.setForeground(java.awt.Color.black);
+        listaApellido.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listaApellidoValueChanged(evt);
+            }
+        });
+        jScrollPane2.setViewportView(listaApellido);
 
-        jTBuscarApellido.setBackground(java.awt.Color.white);
-        jTBuscarApellido.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTBuscarApellido.setForeground(java.awt.Color.black);
-        jTBuscarApellido.setModel(new javax.swing.table.DefaultTableModel(
+        tablaCliente.setBackground(java.awt.Color.white);
+        tablaCliente.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tablaCliente.setForeground(java.awt.Color.black);
+        tablaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -75,51 +116,56 @@ public class BuscarTelefonoporApellidoView extends javax.swing.JInternalFrame {
                 "DNI", "Apellido", "Nombre", "Dirección", "Cuidad", "Teléfono"
             }
         ));
-        jScrollPane1.setViewportView(jTBuscarApellido);
+        jScrollPane1.setViewportView(tablaCliente);
 
-        jButton1.setBackground(java.awt.Color.lightGray);
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setForeground(java.awt.Color.black);
-        jButton1.setText("Salir");
+        btnSalir.setBackground(java.awt.Color.lightGray);
+        btnSalir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnSalir.setForeground(java.awt.Color.black);
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jpBuscarTelPorApellidoLayout = new javax.swing.GroupLayout(jpBuscarTelPorApellido);
+        jpBuscarTelPorApellido.setLayout(jpBuscarTelPorApellidoLayout);
+        jpBuscarTelPorApellidoLayout.setHorizontalGroup(
+            jpBuscarTelPorApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBuscarTelPorApellidoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlbBuscarTelPorApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(219, 219, 219))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jpBuscarTelPorApellidoLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                .addGroup(jpBuscarTelPorApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnSalir)
+                    .addGroup(jpBuscarTelPorApellidoLayout.createSequentialGroup()
+                        .addComponent(jlbApellido)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jpBuscarTelPorApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jpBuscarTelPorApellidoLayout.setVerticalGroup(
+            jpBuscarTelPorApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpBuscarTelPorApellidoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlbBuscarTelPorApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jpBuscarTelPorApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpBuscarTelPorApellidoLayout.createSequentialGroup()
+                        .addGroup(jpBuscarTelPorApellidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlbApellido)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnSalir)
                 .addGap(26, 26, 26))
         );
 
@@ -127,29 +173,43 @@ public class BuscarTelefonoporApellidoView extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpBuscarTelPorApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpBuscarTelPorApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void listaApellidoValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaApellidoValueChanged
+        if (!evt.getValueIsAdjusting()) {
+            String apellidoSeleccionado = listaApellido.getSelectedValue();
+            if (apellidoSeleccionado != null) {
+                txtApellido.setText(String.valueOf(apellidoSeleccionado));
+                cargarDatosEnTabla(apellidoSeleccionado);
+            }
+        }
+    }//GEN-LAST:event_listaApellidoValueChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTBuscarApellido;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel jlbApellido;
+    private javax.swing.JLabel jlbBuscarTelPorApellido;
+    private javax.swing.JPanel jpBuscarTelPorApellido;
+    private javax.swing.JList<String> listaApellido;
+    private javax.swing.JTable tablaCliente;
+    private javax.swing.JTextField txtApellido;
     // End of variables declaration//GEN-END:variables
 }

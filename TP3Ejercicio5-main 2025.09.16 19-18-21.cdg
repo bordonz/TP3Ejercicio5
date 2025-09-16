@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="TP3Ejercicio5-main">
+  <ClassDiagramComponents>
+    <Class name="AgregarCiudadView" package="tp3ejercicio5" visibility="public" xPosition="729.0" yPosition="561.0">
+      <Fields>
+        <Field name="jbtGuardar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jbtSalir" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jlbAgregarCiuadad" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jlbNombreCiudad" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jpAgregarCiudad" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="txtNombreCiudad" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="validaCamposVacios" returnType="boolean" visibility="public">
+          <Argument type="JPanel" name="panel"/>
+        </Method>
+        <Method name="limpiarCampos" returnType="void" visibility="public">
+          <Argument type="JPanel" name="panel"/>
+        </Method>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="jbtGuardarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jbtSalirActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="AgregarClienteView" package="tp3ejercicio5" visibility="public" xPosition="433.0" yPosition="52.0">
+      <Fields>
+        <Field name="btnGuardar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnSalir" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jComboBox1" type="javax.swing.JComboBox&lt;String&gt;" visibility="private"/>
+        <Field name="jLabel7" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jcbCiudad" type="javax.swing.JComboBox&lt;String&gt;" visibility="private"/>
+        <Field name="jlbAgregarCliente" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jlbCiudad" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jlbDni" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jlbDomicilio" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jlbNombre" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jlbapellido" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jpAgregarCliente" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jpDatos" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jpTelefono" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="txtApellido" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtDni" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtDomicilio" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtNombre" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtTelefono" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="llenarComboCiudades" returnType="void" visibility="private"/>
+        <Method name="validaCamposVacios" returnType="boolean" visibility="public">
+          <Argument type="JPanel" name="panel"/>
+        </Method>
+        <Method name="limpiarCampos" returnType="void" visibility="public">
+          <Argument type="JPanel" name="panel"/>
+        </Method>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="txtTelefonoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnGuardarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnSalirActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="BorrarCliente" package="tp3ejercicio5" visibility="public" xPosition="1654.0" yPosition="42.0">
+      <Fields>
+        <Field name="btnBorrarCliente" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnSalir" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jScrollPane2" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jlbBorrarCliente" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jlbDni" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jpBorrarCliente" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="listaDni" type="javax.swing.JList&lt;Long&gt;" visibility="private"/>
+        <Field name="tablaCliente" type="javax.swing.JTable" visibility="private"/>
+        <Field name="txtDni" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="llenarListaDni" returnType="void" visibility="public"/>
+        <Method name="filtrarListaDni" returnType="void" visibility="public">
+          <Argument type="String" name="filtro"/>
+        </Method>
+        <Method name="cargarDatosEnTabla" returnType="void" visibility="public">
+          <Argument type="long" name="dniSeleccionado"/>
+        </Method>
+        <Method name="limpiarCampos" returnType="void" visibility="public">
+          <Argument type="JPanel" name="panel"/>
+        </Method>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="listaDniValueChanged" returnType="void" visibility="private">
+          <Argument type="javax.swing.event.ListSelectionEvent" name="evt"/>
+        </Method>
+        <Method name="btnSalirActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnBorrarClienteActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="txtDniKeyReleased" returnType="void" visibility="private">
+          <Argument type="java.awt.event.KeyEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="BuscarCliente" package="tp3ejercicio5" visibility="public" xPosition="935.0" yPosition="104.0">
+      <Fields>
+        <Field name="btnSalir" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jlbApellido" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jlbBusquedaCliente" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jlbCiudad" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jlbDni" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jlbDomicilio" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jlbNombre" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jlbTelefono" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jpBusquedaClientes" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="listaTelefonos" type="javax.swing.JList&lt;String&gt;" visibility="private"/>
+        <Field name="txtApellido" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtCiudad" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtDni" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtDomicilio" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtNombre" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtTelefono" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="llenarLista" returnType="void" visibility="private">
+          <Argument type="String" name="t1"/>
+        </Method>
+        <Method name="btnSalirActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="txtTelefonoKeyReleased" returnType="void" visibility="private">
+          <Argument type="java.awt.event.KeyEvent" name="evt"/>
+        </Method>
+        <Method name="limpiarCampos" returnType="void" visibility="private"/>
+        <Method name="listaTelefonosValueChanged" returnType="void" visibility="private">
+          <Argument type="javax.swing.event.ListSelectionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="BuscarClienteporCiudadView" package="tp3ejercicio5" visibility="public" xPosition="2324.0" yPosition="112.0">
+      <Fields>
+        <Field name="modelo" type="DefaultTableModel" visibility="private"/>
+        <Field name="cmbCiudades" type="javax.swing.JComboBox&lt;String&gt;" visibility="private"/>
+        <Field name="jButton1" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jlbBucarClientePorCiudad" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jlbCiudades" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jpBuscarClientePorCiudad" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="tablaCliente" type="javax.swing.JTable" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="ArmarCabecera" returnType="void" visibility="public"/>
+        <Method name="llenarComboCiudades" returnType="void" visibility="private"/>
+        <Method name="cargarDatosEnTabla" returnType="void" visibility="public">
+          <Argument type="String" name="ciudadSeleccionada"/>
+        </Method>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="cmbCiudadesItemStateChanged" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ItemEvent" name="evt"/>
+        </Method>
+        <Method name="jButton1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="BuscarTelefonoporApellidoView" package="tp3ejercicio5" visibility="public" xPosition="1681.0" yPosition="554.0">
+      <Fields>
+        <Field name="modelo" type="DefaultTableModel" visibility="private"/>
+        <Field name="btnSalir" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jScrollPane2" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jlbApellido" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jlbBuscarTelPorApellido" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jpBuscarTelPorApellido" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="listaApellido" type="javax.swing.JList&lt;String&gt;" visibility="private"/>
+        <Field name="tablaCliente" type="javax.swing.JTable" visibility="private"/>
+        <Field name="txtApellido" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="ArmarCabecera" returnType="void" visibility="public"/>
+        <Method name="llenarListaApellido" returnType="void" visibility="public"/>
+        <Method name="filtrarListaApellidos" returnType="void" visibility="public">
+          <Argument type="String" name="filtro"/>
+        </Method>
+        <Method name="cargarDatosEnTabla" returnType="void" visibility="public">
+          <Argument type="String" name="apellidoSeleccionado"/>
+        </Method>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="btnSalirActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="listaApellidoValueChanged" returnType="void" visibility="private">
+          <Argument type="javax.swing.event.ListSelectionEvent" name="evt"/>
+        </Method>
+        <Method name="txtApellidoKeyReleased" returnType="void" visibility="private">
+          <Argument type="java.awt.event.KeyEvent" name="evt"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Contacto" package="tp3ejercicio5" visibility="public" xPosition="626.0" yPosition="641.0">
+      <Fields>
+        <Field name="dni" type="long" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="apellido" type="String" visibility="private"/>
+        <Field name="ciudad" type="String" visibility="private"/>
+        <Field name="direccion" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="long" name="dni"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="apellido"/>
+          <Argument type="String" name="ciudad"/>
+          <Argument type="String" name="direccion"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getDni" returnType="long" visibility="public"/>
+        <Method name="setDni" returnType="void" visibility="public">
+          <Argument type="long" name="dni"/>
+        </Method>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getApellido" returnType="String" visibility="public"/>
+        <Method name="setApellido" returnType="void" visibility="public">
+          <Argument type="String" name="apellido"/>
+        </Method>
+        <Method name="getCiudad" returnType="String" visibility="public"/>
+        <Method name="setCiudad" returnType="void" visibility="public">
+          <Argument type="String" name="ciudad"/>
+        </Method>
+        <Method name="getDireccion" returnType="String" visibility="public"/>
+        <Method name="setDireccion" returnType="void" visibility="public">
+          <Argument type="String" name="direccion"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="DirectorioTelefonico" package="tp3ejercicio5" visibility="public" xPosition="81.0" yPosition="624.0">
+      <Fields>
+        <Field name="contactos" type="TreeMap&lt;Long, Contacto&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="agregarContacto" returnType="void" visibility="public">
+          <Argument type="Long" name="telefono"/>
+          <Argument type="Contacto" name="contacto"/>
+        </Method>
+        <Method name="buscarContacto" returnType="Contacto" visibility="public">
+          <Argument type="Long" name="telefono"/>
+        </Method>
+        <Method name="buscarTelefono" returnType="Set&lt;Long&gt;" visibility="public">
+          <Argument type="String" name="apellido"/>
+        </Method>
+        <Method name="buscarContactos" returnType="ArrayList&lt;Contacto&gt;" visibility="public">
+          <Argument type="String" name="ciudad"/>
+        </Method>
+        <Method name="borrarContacto" returnType="void" visibility="public">
+          <Argument type="Long" name="telefono"/>
+        </Method>
+        <Method name="getContactos" returnType="TreeMap&lt;Long, Contacto&gt;" visibility="public"/>
+        <Method name="setContactos" returnType="void" visibility="public">
+          <Argument type="TreeMap&lt;Long, Contacto&gt;" name="contactos"/>
+        </Method>
+        <Method name="getTelefonos" returnType="Set&lt;Long&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Panel_tp5_ej1" package="tp3ejercicio5" visibility="public" xPosition="49.0" yPosition="22.0">
+      <Fields>
+        <Field name="directorio" type="DirectorioTelefonico" visibility="public" isStatic="true"/>
+        <Field name="Ciudades" type="Set&lt;String&gt;" visibility="public" isStatic="true"/>
+        <Field name="AgregarCiudad" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="AgregarCliente" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="BorrarCliente" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="BuscarCliente" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="BuscarClienteporCiudad" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="BuscarTelefono" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="Escritorio" type="javax.swing.JDesktopPane" visibility="private"/>
+        <Field name="Salir" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="jmCiudades" type="javax.swing.JMenu" visibility="private"/>
+        <Field name="jmClientes" type="javax.swing.JMenu" visibility="private"/>
+        <Field name="jmDirectorio" type="javax.swing.JMenu" visibility="private"/>
+        <Field name="jmSalir" type="javax.swing.JMenu" visibility="private"/>
+        <Field name="jmVistaPrincipal" type="javax.swing.JMenuBar" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
+        <Method name="BuscarTelefonoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="AgregarCiudadActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="BorrarClienteActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="AgregarClienteActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="BuscarClienteporCiudadActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jmDirectorioActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="BuscarClienteActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jmClientesActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jmCiudadesActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jmSalirActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="SalirActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="contactos" source="tp3ejercicio5.DirectorioTelefonico" target="tp3ejercicio5.Contacto" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="TreeMap&lt;Long, Contacto&gt;"/>
+    <HasRelation name="directorio" source="tp3ejercicio5.Panel_tp5_ej1" target="tp3ejercicio5.DirectorioTelefonico" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="tp3ejercicio5.DirectorioTelefonico" target="tp3ejercicio5.Contacto" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
